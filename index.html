@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Galaxy Republic Navy V3</title>
+
+<style>
+body{margin:0;background:black;color:white;font-family:Arial;overflow-x:hidden;}
+.hero{height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;position:relative;}
+video{position:absolute;width:100%;height:100%;object-fit:cover;z-index:-2;}
+.overlay{position:absolute;width:100%;height:100%;background:linear-gradient(rgba(0,0,0,0.7),black);z-index:-1;}
+
+h1{font-size:70px;text-shadow:0 0 30px #4da6ff;}
+p{color:#ccc}
+
+.btn{
+padding:15px 35px;
+margin:10px;
+background:#4da6ff;
+border:none;
+cursor:pointer;
+color:white;
+transition:0.3s;
+}
+.btn:hover{
+box-shadow:0 0 25px #4da6ff;
+transform:scale(1.1);
+}
+
+/* Parallax stars */
+.stars{
+position:fixed;
+width:100%;
+height:100%;
+background:url('https://www.transparenttextures.com/patterns/stardust.png');
+animation:move 120s linear infinite;
+z-index:-3;
+}
+@keyframes move{
+from{background-position:0 0;}
+to{background-position:10000px 5000px;}
+}
+
+/* sections */
+.section{padding:120px 20px;text-align:center;}
+.card{
+margin:20px;
+padding:30px;
+background:rgba(255,255,255,0.05);
+border-radius:15px;
+transition:0.4s;
+}
+.card:hover{
+transform:translateY(-10px);
+box-shadow:0 0 25px #4da6ff;
+}
+
+/* animations */
+.fade{opacity:0;transform:translateY(60px);transition:1s;}
+.fade.show{opacity:1;transform:translateY(0);}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+
+<section class="hero">
+<video autoplay muted loop>
+<source src="video.mp4" type="video/mp4">
+</video>
+<div class="overlay"></div>
+
+<h1 class="fade">Galaxy Republic Navy</h1>
+<p class="fade">Fight in the Clone Wars. Command fleets. Rewrite history.</p>
+
+<a href="download.html"><button class="btn">Download</button></a>
+</section>
+
+<section class="section">
+<h2 class="fade">Blaster Arsenal</h2>
+<div class="card fade">
+<p>Alle Waffen der Klonkriege entdecken</p>
+<a href="blaster.html"><button class="btn">Explore</button></a>
+</div>
+</section>
+
+<section class="section">
+<h2 class="fade">Warships</h2>
+<div class="card fade">
+<p>Führe Venator & mehr</p>
+<a href="ships.html"><button class="btn">Explore</button></a>
+</div>
+</section>
+
+<section class="section">
+<h2 class="fade">Installation</h2>
+<div class="card fade">
+<a href="install.html"><button class="btn">Guide</button></a>
+</div>
+</section>
+
+<section class="section">
+<h2 class="fade">Join the Republic</h2>
+<div class="card fade">
+<p>Werde Teil der Community</p>
+<button class="btn" onclick="playSound()">Join Discord</button>
+</div>
+</section>
+
+<audio id="hoverSound" src="https://www.myinstants.com/media/sounds/lightsaber.mp3"></audio>
+
+<script>
+const fades=document.querySelectorAll('.fade');
+window.addEventListener('scroll',()=>{
+fades.forEach(el=>{
+if(el.getBoundingClientRect().top<window.innerHeight-100){
+el.classList.add('show');
+}
+});
+});
+
+function playSound(){
+document.getElementById("hoverSound").play();
+}
+</script>
+
+</body>
+</html>
